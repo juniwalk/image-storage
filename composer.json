@@ -1,0 +1,38 @@
+{
+	"name": "juniwalk/image-storage",
+	"description": "Image storing utility that will help you save images into defined storages.",
+	"type": "library",
+	"keywords": ["image","storage"],
+	"license": "MIT",
+
+	"authors": [{
+		"name": "Martin Procházka",
+		"email": "juniwalk@outlook.cz",
+		"role": "Developer"
+	}],
+
+	"support": {
+		"issues": "https://github.com/juniwalk/image-storage/issues"
+	},
+
+	"require": {
+		"php": "^7.0",
+		"nette/utils": "^2.0"
+	},
+
+	"require-dev": {
+		"nette/tester": "^1.0"
+	},
+
+	"autoload": {
+		"psr-4": {"JuniWalk\\ImageStorage\\": "src/"}
+	},
+
+	"autoload-dev": {
+		"psr-4": {"JuniWalk\\ImageStorage\\Tests\\": "tests/"}
+	},
+
+	"suggest": {
+		"nette/http": "Allows directly storing uploaded files using Media::fromUpload($uploadedFile)."
+	}
+}
