@@ -95,7 +95,6 @@ final class WatermarkFilter implements \JuniWalk\ImageStorage\Filter
 
 	/**
 	 * @param  Image  $image
-	 * @throws ImageException
 	 */
 	public function apply(Image $image)
 	{
@@ -109,33 +108,31 @@ final class WatermarkFilter implements \JuniWalk\ImageStorage\Filter
 		$watermark->scale($width);
 
 		switch ($this->align) {
-			case static::TOP_LEFT;
-				$x = $image->getWidth() * static::MARGIN_INNER;
-				$y = $image->getHeight() * static::MARGIN_INNER;
-				break;
-
-			case static::BOTTOM_LEFT;
-				$x = $image->getWidth() * static::MARGIN_INNER;
-				$y = $image->getHeight() * static::MARGIN_OUTER - $watermark->getHeight();
-				break;
-
-			case static::TOP_RIGHT;
-				$x = $image->getWidth() * static::MARGIN_OUTER - $watermark->getWidth();
-				$y = $image->getHeight() * static::MARGIN_INNER;
-				break;
-
-			case static::BOTTOM_RIGHT;
-				$x = $image->getWidth() * static::MARGIN_OUTER - $watermark->getWidth();
-				$y = $image->getHeight() * static::MARGIN_OUTER - $watermark->getHeight();
-				break;
-
-			case static::CENTER;
+			case static::CENTER:
 				$y = ($image->getHeight() - $watermark->getHeight()) / 2;
 				$x = ($image->getWidth() - $watermark->getWidth()) / 2;
 				break;
 
+			case static::TOP_LEFT:
+				$x = $image->getWidth() * static::MARGIN_INNER;
+				$y = $image->getHeight() * static::MARGIN_INNER;
+				break;
+
+			case static::BOTTOM_LEFT:
+				$x = $image->getWidth() * static::MARGIN_INNER;
+				$y = $image->getHeight() * static::MARGIN_OUTER - $watermark->getHeight();
+				break;
+
+			case static::TOP_RIGHT:
+				$x = $image->getWidth() * static::MARGIN_OUTER - $watermark->getWidth();
+				$y = $image->getHeight() * static::MARGIN_INNER;
+				break;
+
+			case static::BOTTOM_RIGHT:
 			default:
-				throw new ImageException;
+				$x = $image->getWidth() * static::MARGIN_OUTER - $watermark->getWidth();
+				$y = $image->getHeight() * static::MARGIN_OUTER - $watermark->getHeight();
+				break;
 		}
 
 		$image->place($watermark, $x, $y, $this->opacity);

@@ -12,6 +12,7 @@ namespace JuniWalk\ImageStorage;
 
 use JuniWalk\ImageStorage\Exception\ImageException;
 use JuniWalk\ImageStorage\Exception\ImageExistsException;
+use JuniWalk\ImageStorage\Exception\InvalidPathException;
 use JuniWalk\ImageStorage\Exception\StorageNotFoundException;
 
 final class ImageStorage
@@ -30,9 +31,10 @@ final class ImageStorage
 
 
 	/**
-	 * @param string  $directory
-	 * @param string  $wwwDir
-	 * @param bool    $allowOverwrite
+	 * @param  string  $directory
+	 * @param  string  $wwwDir
+	 * @param  bool    $allowOverwrite
+	 * @throws InvalidPathException
 	 */
 	public function __construct(string $directory, string $wwwDir, bool $allowOverwrite = FALSE)
 	{
@@ -75,7 +77,7 @@ final class ImageStorage
 
 	/**
 	 * @param  string  $storageName
-	 * @return IStorage|NULL
+	 * @return Storage|NULL
 	 */
 	public function getStorage(string $storageName)
 	{
