@@ -50,10 +50,10 @@ final class WatermarkFilter implements \JuniWalk\ImageStorage\Filter
 	/** @var Image */
 	private $watermark;
 
-	/** @var float */
+	/** @var int */
 	private $opacity;
 
-	/** @var float */
+	/** @var int */
 	private $angle;
 
 	/** @var string */
@@ -63,10 +63,10 @@ final class WatermarkFilter implements \JuniWalk\ImageStorage\Filter
 	/**
 	 * @param string  $file
 	 * @param string  $align
-	 * @param float   $angle
-	 * @param float   $opacity
+	 * @param int     $angle
+	 * @param int     $opacity
 	 */
-	public function __construct(string $file, string $align = self::BOTTOM_RIGHT, float $angle = 0, float $opacity = 45)
+	public function __construct(string $file, string $align = self::BOTTOM_RIGHT, int $angle = 0, int $opacity = 45)
 	{
 		$this->watermark = Image::fromFile($file);
 		$this->opacity = $opacity;

@@ -14,12 +14,15 @@ use Nette\Utils\Image;
 
 final class ColorizeFilter implements \JuniWalk\ImageStorage\Filter
 {
-	/** @var int[] */
+	/** @var array */
 	private $color;
 
 
 	/**
-	 * @param int  $level
+	 * @param int  $red
+	 * @param int  $green
+	 * @param int  $blue
+	 * @param int  $alpha
 	 */
 	public function __construct(int $red, int $green, int $blue, int $alpha = 0)
 	{

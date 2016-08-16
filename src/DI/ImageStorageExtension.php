@@ -27,7 +27,7 @@ final class ImageStorageExtension extends \Nette\DI\CompilerExtension
 		$config = $this->validateConfig($this->defaults);
 		$config['wwwDir'] = $builder->expand('%wwwDir%');
 
-		$imageStorage = $builder->addDefinition($this->prefix('imageStorage'))
+		$builder->addDefinition($this->prefix('imageStorage'))
 			->setClass('JuniWalk\ImageStorage\ImageStorage', $config);
 	}
 
